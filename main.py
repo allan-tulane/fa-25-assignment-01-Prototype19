@@ -13,8 +13,24 @@ def foo(x):
         return foo(x-1) + foo(x-2)
 
 def longest_run(mylist, key):
-    ### TODO
-    pass
+    # Initialize variables which will store the current run and the largest run
+    largest_run = 0
+    curr_run = 0
+
+    for element in mylist:
+        # Adds to curr_run if element matches key
+        if element == key:
+            curr_run += 1
+        # Saves run counter if it's the longest so far and then resets curr_run counter if element doesn't matches key
+        else:
+            if curr_run > largest_run:
+                largest_run = curr_run
+            curr_run = 0
+    # After going through the whole list, double check if the curr_run is bigger than largest_run
+    if curr_run > largest_run:
+        largest_run = curr_run
+
+    return largest_run
 
 
 class Result:
