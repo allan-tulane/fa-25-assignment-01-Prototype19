@@ -38,30 +38,22 @@ Yes, if you do the same process as in the last problem, you will get $\sqrt{n} \
 2. **SPARC to Python** (12 pts)
 
 Consider the following SPARC code of the Fibonacci sequence, which is the series of numbers where each number is the sum of the two preceding numbers. For example, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610 ... 
-$$
-\begin{array}{l}
-\mathit{foo}~x =   \\
-~~~~\texttt{if}{}~~x \le 1~~\texttt{then}{}\\
-~~~~~~~~x\\   
-~~~~\texttt{else}\\
-~~~~~~~~\texttt{let}{}~~(ra, rb) = (\mathit{foo}~(x-1))~~,~~(\mathit{foo}~(x-2))~~\texttt{in}{}\\  
-~~~~~~~~~~~~ra + rb\\  
-~~~~~~~~\texttt{end}{}.\\
-\end{array}
-$$ 
+
+```sparc
+foo x =
+  if x <= 1 then
+    x
+  else
+    let (ra, rb) = (foo (x - 1)), (foo (x - 2)) in
+      ra + rb
+    end.
+```
 
   - 2a. (6 pts) Translate this to Python code -- fill in the `def foo` method in `main.py`  
 
-  - 2b. (6 pts) What does this function do, in your own words?  
+  - 2b. (6 pts) What does this function do, in your own words?
 
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
+This 'foo' function is exactly like the fibonacci function. Basically, what the fibonacci function does is that for an input x it makes two recursive calls, f(x-1) and f(x-2), and add the results of those calls togther. If the input x is 1 or lower, the function will always return 1.
   
 
 3. **Parallelism and recursion** (26 pts)
