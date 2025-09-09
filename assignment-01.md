@@ -12,36 +12,28 @@ In this assignment, you will learn more about asymptotic notation, parallelism, 
 1. (2 pts ea) **Asymptotic notation** (12 pts)
 
   - 1a. Is $2^{n+1} \in O(2^n)$? Why or why not? 
-.  
-.  
-.  
-.  
-. 
-  - 1b. Is $2^{2^n} \in O(2^n)$? Why or why not?     
-.  
-.  
-.  
-.  
-.  
-  - 1c. Is $n^{1.01} \in O(\mathrm{log}^2 n)$?    
-.  
-.  
-.  
-.  
 
-  - 1d. Is $n^{1.01} \in \Omega(\mathrm{log}^2 n)$?  
-.  
-.  
-.  
-.  
-  - 1e. Is $\sqrt{n} \in O((\mathrm{log} n)^3)$?  
-.  
-.  
-.  
-.  
+Yes because by using the limit method and evaluating the following limit: $\lim_{n \to \infty} \frac{2^{n+1}}{2^n}$, you will get the the number 2 which means that $2^{n+1} \in \Theta(2^n)$ or just $2^{n+1} \in O(2^n)$.
+
+  - 1b. Is $2^{2^n} \in O(2^n)$? Why or why not?
+
+No, if you evaluate $2^{2^n}$ to be just $4^n$ and then use the limit method: $\lim_{n \to \infty} \frac{4^n}{2^n}$, the limit will evaulate to $2^\infty$ or $\infty$. This means that $2^{2^n} \in \Omega(2^n)$ and *not* $2^{2^n} \in O(2^n)$.
+
+  - 1c. Is $n^{1.01} \in O(\mathrm{log}^2 n)$?
+
+No, if you evaluate $n^{1.01}$ to be just $n^{101/100}$ and then use the limit method: $\lim_{n \to \infty} \frac{n^{101/100}}{\mathrm{log}^2 n}$, the limit will evaulate to $\infty$. This means that $n^{1.01} \in \Omega(\mathrm{log}^2 n)$ and *not* $n^{1.01} \in O(\mathrm{log}^2 n)$.
+
+  - 1d. Is $n^{1.01} \in \Omega(\mathrm{log}^2 n)$?
+
+Yes, if you do the same process as in the last problem, you will get $n^{1.01} \in \Omega(\mathrm{log}^2 n)$.
+
+  - 1e. Is $\sqrt{n} \in O((\mathrm{log} n)^3)$?
+  
+No, if you use the limit method: $\lim_{n \to \infty} \frac{\sqrt{n}}{(\mathrm{log} n)^3}$, the limit will evaulate to $\infty$. This means that $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$ and *not* $\sqrt{n} \in O((\mathrm{log} n)^3)$.
+
   - 1f. Is $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$?  
-.  
 
+Yes, if you do the same process as in the last problem, you will get $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$.
 
 2. **SPARC to Python** (12 pts)
 
