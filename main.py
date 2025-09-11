@@ -40,11 +40,11 @@ class Result:
         self.right_size = right_size             # run on right side of input
         self.longest_size = longest_size         # longest run in input
         self.is_entire_range = is_entire_range   # True if the entire input matches the key
-        
+
     def __repr__(self):
         return('longest_size=%d left_size=%d right_size=%d is_entire_range=%s' %
               (self.longest_size, self.left_size, self.right_size, self.is_entire_range))
-    
+
 
 def to_value(v):
     """
@@ -55,10 +55,40 @@ def to_value(v):
         return v.longest_size
     else:
         return int(v)
-        
-def longest_run_recursive(mylist, key):
-    ### TODO
-    pass
 
+def longest_run_recursive(mylist, key):
+    # Base Case
+    if len(mylist) <= 1:
+        if mylist[0] == key:
+            return Result(1,1,1, True)
+        else:
+            return Result(0,0,0, False)
+
+    # Recursive Case
+    else:
+        mid = len(mylist) // 2
+        left_list = mylist[:mid]
+        right_list = mylist[mid:]
+        left_result = longest_run_recursive(left_list, key)
+        right_result = longest_run_recursive(right_list, key)
+
+        is_entire_range = left_result.is_entire_range and right_result.is_entire_range
+
+        if left_result.is_entire_range:
+            left_size = len(left_list) + right_result.left_size
+        else:
+            left_size = left_result.left_size
+
+        if right_result.is_entire_range:
+            right_size = len(right_list) + left_result.right_size
+        else:
+            right_size = right_result.right_size
+
+        # Just in case the longest run is in the middle of the list
+        cross_size = left_result.right_size + right_result.left_size
+
+        longest_size = max(left_result.longest_size, right_result.longest_size, cross_size)
+
+        return Result(left_size,right_size,longest_size,is_entire_range)
 
 
